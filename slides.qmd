@@ -5,6 +5,8 @@ format:
   revealjs: 
     sc-sb-title: true
     theme: simple
+    template-partials:
+      - title-slide.html
 filters:
   - reveal-header
 slide-level: 3
@@ -15,22 +17,61 @@ nocite: '@*'
 
 # Top Level Slide
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+Quarto enables you to weave together content and executable code into a finished
+presentation. To view the code for this presentation go to 
+
+<br>
+
+::: {style="font-size: 105%; text-align: center;" }
+github.com/elisehellwig/template_quarto_presentation
+:::
+
+:::{.notes}
+-   Here are some notes for the first slide. 
+-   **You can format them using markdown**
+-   *However not using css or html*
+:::
 
 ## Second Level Slide
 
-When you click the **Render** button a document will be generated that includes:
+To render the quarto file via the  command line, run the code 
 
--   Content authored with markdown
--   Output from executable code
+<br>
+
+::: {style="font-size: 200%;"}
+
+```
+quarto render slides.qmd 
+```
+:::
+<br>
+
+If you use RStudio or VSCode, there is a render button you can use as well.
 
 ### Third Level Slide
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+# Formatting
 
-```{r}
-1 + 1
+
+
+## 
+
+To create headers at the top of the slides for navigational purposes, install
+a quarto extension by running
+
+<br>
+
+::: {style="font-size: 200%;"}
+
 ```
+quarto add shafayetShafee/reveal-header
+```
+:::
+
+<br>
+on the command line. Then commit the `_extensions/` folder to your repo.
+
+
 
 ## References 
 
