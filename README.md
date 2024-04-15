@@ -10,7 +10,7 @@ information. In particular, background images and text are not included.
 Documentation:
 
 - [Revealjs documenation][rjs]
-- [Custom title slide][] (required for title slide speaker notes)
+- [Custom title slide][ts] (required for title slide speaker notes)
 - [Custom format][format]
 - Add title slide speaker notes using [title-attributes][ta]
 - Add title slide speaker notes using [custom template][ct]
