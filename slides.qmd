@@ -5,65 +5,246 @@ format:
   revealjs: 
     sc-sb-title: true
     theme: simple
+    logo: img/abridged_datalab_logo.png
+    transition: slide
+    background-transition: fade
     template-partials:
       - title-slide.html
+    highlight-style: breeze
+    #pdf-separate-fragments: true
 filters:
   - reveal-header
 slide-level: 3
 editor: source
 bibliography: references.bib  
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+html-table-processing: none #not necessary after release of quarto 1.5
 nocite: '@*'
 ---
 
 # Top Level Slide
 
-Quarto enables you to weave together content and executable code into a finished
-presentation. To view the code for this presentation go to 
+<br>
+
+To view the code for this presentation go to: 
+
+::: {style="font-size: 95%" }
+<https://github.com/elisehellwig/template_quarto_presentation>
+:::
 
 <br>
 
-::: {style="font-size: 105%; text-align: center;" }
-github.com/elisehellwig/template_quarto_presentation
+For a more polished and extensive demo:
+
+::: {style="font-size: 95%" }
+<https://quarto.org/docs/presentations/revealjs/demo>
 :::
 
+
 :::{.notes}
+
 -   Here are some notes for the first slide. 
+-   You can add notes to the notes section by using the {.notes} CSS property
+-   This property is so useful, I've actually added it as a code snippet.
 -   **You can format them using markdown**
 -   *However not using css or html*
+-   You can use latex though: $e^{i\pi} = -1$
+-   Depending on how much you want to cover on a single slide
+-   The bullet points can get quite long
 :::
 
 ## Second Level Slide
 
-To render the quarto file via the  command line, run the code 
+To render the quarto file via the command line, run the code 
 
 <br>
 
 ::: {style="font-size: 200%;"}
 
-```
+```bash
 quarto render slides.qmd 
 ```
 :::
+
 <br>
 
 If you use RStudio or VSCode, there is a render button you can use as well.
 
 ### Third Level Slide
 
-# Formatting
-
-
-
-## 
-
-To create headers at the top of the slides for navigational purposes, install
-a quarto extension by running
+You can determine which level of header initiates a new slide by using the
+`slide-level` option in the yaml header. The default value is 
 
 <br>
 
 ::: {style="font-size: 200%;"}
 
 ```
+slide-level: 2
+```
+:::
+
+<br>
+but I generally use 
+
+<br>
+
+
+::: {style="font-size: 200%;"}
+
+```
+slide-level: 3
+```
+:::
+
+
+# Formatting {background-image="img/format_icon.svg"
+              background-size="50%"
+              background-opacity="0.4"
+              background-position="60% 50%"
+              background-color="#c1b8fc"}
+
+## Incremental Slide Updates
+
+There are several ways to parts your slide to appear over time:
+
+:::{.incremental}
+
+-   Use the `{.incremental}` CSS property
+
+-   Add `incremental: true` in the revealjs section of the yaml header
+
+-   Use the `{.fragment}` CSS property
+
+:::
+
+## Images and Columns
+<center>
+
+::: {.fragment}
+:::{style="font-size: 150%;"}
+
+**Which is better?**
+
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+
+::: {.fragment}
+Puppies
+
+![](img/puppy.jpg){width="65%"}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+Kittens
+
+![](img/kitten.jpg){width="80%"}
+:::
+
+:::
+
+:::
+</center>
+
+## Title Slide Formatting
+
+::: {.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+<left>
+
+:::{style="font-size: 130%;"}
+
+Add the following code to your yaml header:
+
+```markdown
+format: 
+  revealjs: 
+    template-partials:
+      - title-slide.html
+
+```
+:::
+</left>
+
+:::
+
+
+:::{.fragment}
+
+```html
+<section id="title-slide" 
+          data-background-image="img/datalab-logo-full-color-rgb.png"
+          data-background-position="5% 2%"
+          data-background-size="35%">
+  <h1 class="title">[YOUR TITLE HERE]</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+[YOUR NAME HERE]
+</div>
+</div>
+</div>
+
+<aside class="notes">
+<p>Paragraph text here</p>
+<ul>
+<li>First bullet point here</li>
+<li>Second bullet point here</li>
+<li>Third bullet point here</li>
+<li>Have used a database before</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+
+</section>
+
+
+```
+:::
+:::
+
+## Slide Headers
+
+<br>
+
+::: {style="font-size: 150%;"}
+
+Slide headers are the labels at the upper corners of the slides that tell 
+you what section you are in.
+
+::: 
+
+
+### Installing Slide Header Extension
+To create headers at the top of the slides for navigational purposes, install
+a quarto extension by running
+
+<br>
+
+::: {style="font-size: 170%;"}
+
+```bash
 quarto add shafayetShafee/reveal-header
 ```
 :::
@@ -71,9 +252,213 @@ quarto add shafayetShafee/reveal-header
 <br>
 on the command line. Then commit the `_extensions/` folder to your repo.
 
+### Implementing Slide Headers
+
+Then add the following code to the yaml header
+
+<br>
+
+::: {style="font-size: 250%;"}
+
+```markdown
+format: 
+  revealjs: 
+    sc-sb-title: true
+filters:
+  - reveal-header
+```
+:::
+
+# Data and Code {background-image="img/code_icon.svg"
+                 background-size="50%"
+                 background-opacity="0.4"
+                 background-position="60% 50%"
+                 background-color="#9de39d"}
 
 
-## References 
+
+## Code Tabs
+
+Use `reticulate` for running python code using the knitr engine and `r2py` for
+running R code with the Juypter engine.
+
+::: {.panel-tabset}
+
+### R
+
+```{r}
+#| label: read-data-R
+#| echo: true
+#| eval: false
+
+
+library(kableExtra)
+
+mpg_cap = paste("A subset of the mtcars data set, containing information",
+                "about 32 cars from the 1974 Motor Trend Magazine",
+                "(Henderson and Velleman 1981).")
+
+kbl(mtcars, caption = mpg_cap) |>
+   scroll_box(width = "100%", height = "550px")
+
+```
+
+
+### Python
+
+```{python echo=TRUE, eval=FALSE}
+#| label: read-data-python
+#| echo: true
+#| eval: false
+import pandas as pd
+from IPython.display import HTML
+
+mpg_cap = """
+A subset of the mtcars data set, containing information about 32 cars from the
+1974 Motor Trend Magazine (Henderson and Velleman 1981).
+"""
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+mtcars_py = pd.DataFrame(r.mtcars)
+
+#format(precision=2) won't be necessary anymore with release of quarto 1.5
+mtcars_html = mtcars_py.style.format(precision=2).set_caption(mpg_cap).to_html()
+
+HTML(mtcars_html)
+
+
+
+```
+
+
+:::
+
+
+### Scrollable Tables
+
+::: {style="font-size: 90%;"}
+
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+#| label: table-R
+#| echo: false
+#| eval: true
+
+
+library(kableExtra)
+
+mpg_cap = paste("A subset of the mtcars data set, containing information",
+                "about 32 cars from the 1974 Motor Trend Magazine",
+                "(Henderson and Velleman 1981).")
+
+kbl(mtcars, caption = mpg_cap) |>
+   scroll_box(width = "100%", height = "550px")
+
+```
+
+
+#### Python {.scrollable}
+
+:::{style="overflow-y: scroll; max-height: 500px;"}
+
+```{python echo=FALSE, eval=TRUE}
+#| label: table-python
+
+import pandas as pd
+from IPython.display import HTML
+
+mpg_cap = """
+A subset of the mtcars data set, containing information about 32 cars from the
+1974 Motor Trend Magazine (Henderson and Velleman 1981).
+"""
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+mtcars_py = pd.DataFrame(r.mtcars)
+
+#format(precision=2) won't be necessary anymore with release of quarto 1.5
+mtcars_html = mtcars_py.style.format(precision=2).set_caption(mpg_cap).to_html()
+
+HTML(mtcars_html)
+
+
+```
+:::
+
+:::
+
+::: 
+
+### Table Formatting Documentation
+
+How you modify table formatting depends on the language you use.
+
+::: {.panel-tabset}
+
+#### R
+
+In R, two of the most common packages for html table formatting are 
+[kableExtra][ke] and [DT][dt]. For smaller, highly customized, static
+tables, use `kableExtra`. If you want your table to be interactive, `DT` is 
+better.
+
+[ke]: https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
+[dt]: https://rstudio.github.io/DT/
+
+#### Python
+
+Unsurprisingly, `pandas` is the name of the game for python table formatting,
+specifically the [Styler][pd_doc] class. Make sure to install `Jinja2` before
+using though.
+
+[pd_doc]: https://pandas.pydata.org/docs/reference/api/pandas.io.formats.style.Styler.html
+
+:::
+
+
+# Presenting {background-image="img/presentation_icon.svg"
+              background-size="50%"
+              background-opacity="0.4"
+              background-position="60% 50%"
+              background-color="#fce677"}
+
+
+
+## Speaker Notes
+
+::: {.r-stack}
+![](img/default_speaker_notes.png)
+
+![](img/my_speaker_notes.png){.fragment}
+
+:::
+
+
+
+## Changing the Video Feed Location
+
+::: {.r-stack}
+
+![](img/zoom/bad_screen.jpg){.fragment}
+
+![](img/zoom/view_options.jpg){.fragment}
+
+![](img/zoom/regular_layout.jpg){.fragment}
+
+![](img/zoom/video_off.jpg){.fragment}
+
+![](img/zoom/good_screen.jpg){.fragment}
+
+:::
+
+# References 
 
 ::: {#refs}
 :::
