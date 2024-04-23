@@ -98,12 +98,16 @@ slide-level: 3
 ```
 :::
 
+## {background-image="img/datalab_intro_slide.png"
+    background-size="contain"
+    background-color="#002854"}
+
 
 # Formatting {background-image="img/format_icon.svg"
               background-size="50%"
-              background-opacity="0.4"
+              background-opacity="0.2"
               background-position="60% 50%"
-              background-color="#c1b8fc"}
+              background-color="#bed2e8"}
 
 ## Incremental Slide Updates
 
@@ -182,10 +186,11 @@ format:
 :::{.fragment}
 
 ```html
-<section id="title-slide" 
-          data-background-image="img/datalab-logo-full-color-rgb.png"
-          data-background-position="5% 2%"
-          data-background-size="35%">
+<section id="title-slide"
+        data-background-color="#002854"
+        data-background-image="img/datalab-logo-inverted-rgb.png" 
+        data-background-position="5% 2%" data-background-size="35%" 
+        class="quarto-title-block center">
   <h1 class="title">[YOUR TITLE HERE]</h1>
 
 <div class="quarto-title-authors">
@@ -271,9 +276,9 @@ filters:
 
 # Data and Code {background-image="img/code_icon.svg"
                  background-size="50%"
-                 background-opacity="0.4"
+                 background-opacity="0.2"
                  background-position="60% 50%"
-                 background-color="#9de39d"}
+                 background-color="#bed2e8"}
 
 
 
@@ -425,9 +430,9 @@ using though.
 
 # Presenting {background-image="img/presentation_icon.svg"
               background-size="50%"
-              background-opacity="0.4"
+              background-opacity="0.2"
               background-position="60% 50%"
-              background-color="#fce677"}
+              background-color="#bed2e8"}
 
 
 
@@ -457,9 +462,9 @@ using though.
 ![](img/zoom/good_screen.jpg){.fragment}
 :::
 
-# Exporting Slides to PDF
+# Exporting Slides to PDF {background-color="#bed2e8"}
 
-# References 
+# References {background-color="#bed2e8"}
 
 ::: {#refs}
 :::
